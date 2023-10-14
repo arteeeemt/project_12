@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { forModal } from './modal';
 
 const list = document.querySelector('.js-list');
 
@@ -83,20 +84,30 @@ topFive();
 
 //---------------------------------------------------------------//
 
-const modal = document.querySelector('.modal');
+// const modal = document.querySelector('.modal');
 
+// listOfBookFromCategory.addEventListener('click', e => {
+//   const touch = e.target.closest('li');
+//   const touchId = touch.dataset.id;
+
+//   async function forModal() {
+//     const result = axios.get(`${touchId}`);
+//     const resultVal = await result.then(data => data.data);
+//     const modalMake = makeModal(resultVal);
+//     modal.innerHTML = modalMake;
+//   }
+
+//   forModal();
+// });
+
+async function serviceModal(touchId) {
+  const responce = await axios.get(`${touchId}`);
+  return await responce.data;
+}
 listOfBookFromCategory.addEventListener('click', e => {
   const touch = e.target.closest('li');
   const touchId = touch.dataset.id;
-
-  async function forModal() {
-    const result = axios.get(`${touchId}`);
-    const resultVal = await result.then(data => data.data);
-    const modalMake = makeModal(resultVal);
-    modal.innerHTML = modalMake;
-  }
-
-  forModal();
+  forModal(touchId);
 });
 
 // ============================================================ //
@@ -109,3 +120,4 @@ function makeModal(val) {
   <button type="button" class="js-add"> add </button>
   `;
 }
+export {serviceModal};
