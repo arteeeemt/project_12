@@ -16,22 +16,26 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
       integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
       crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      referrerpolicy="no-referrer"/>
     
-    <script type="module" crossorigin src="/project_12/assets/index-63cf47e7.js"></script>
-    <link rel="stylesheet" href="/project_12/assets/index-2487c3fa.css">
+    <script type="module" crossorigin src="/project_12/assets/index-f6895efd.js"></script>
+    <link rel="stylesheet" href="/project_12/assets/index-b4d6c225.css">
   </head>
   <body>
+
+    <div class="mask">
+      <div class="loader"></div>
+    </div>
+
     <header class="header">
   <div class="container header-container">
     <div class="logo-nav">
       <a class="logo link" href="./index.html">
         <svg class="header-logo" width="24" height="24">
-          <use href="/project_12/assets/sprite-0f7bd514.svg#icon-logo"></use>
+          <use href="/project_12/assets/sprite-20f6567e.svg#icon-logo"></use>
         </svg>
         <svg class="header-logo-text" width="77" height="13">
-          <use href="/project_12/assets/sprite-0f7bd514.svg#icon-Bookshelf-logo"></use>
+          <use href="/project_12/assets/sprite-20f6567e.svg#icon-Bookshelf-logo"></use>
         </svg>
       </a>
       <nav class="navigation">
@@ -43,7 +47,7 @@
             <a class="link nav-link" href="./shoplist.html"
               >Shopping list
               <svg class="shopping-cart" width="20" height="20">
-                <use href="/project_12/assets/sprite-0f7bd514.svg#icon-cart"></use>
+                <use href="/project_12/assets/sprite-20f6567e.svg#icon-cart"></use>
               </svg>
             </a>
           </li>
@@ -59,14 +63,14 @@
 
       <button type="button" class="burger-open" data-menu-open>
         <svg class="burger" width="28" height="28">
-          <use href="/project_12/assets/sprite-0f7bd514.svg#icon-burger"></use>
+          <use href="/project_12/assets/sprite-20f6567e.svg#icon-burger"></use>
         </svg>
       </button>
 
       <button type="button" class="sign-btn">
         Sign up
         <svg class="arrow" width="20" height="20">
-          <use href="/project_12/assets/sprite-0f7bd514.svg#icon-arrow-narrow-right"></use>
+          <use href="/project_12/assets/sprite-20f6567e.svg#icon-arrow-narrow-right"></use>
         </svg>
       </button>
     </div>
@@ -79,10 +83,10 @@
       <div class="logo-nav">
         <a class="logo link" href="./index.html">
           <svg class="header-logo" width="24" height="24">
-            <use href="/project_12/assets/sprite-0f7bd514.svg#icon-logo"></use>
+            <use href="/project_12/assets/sprite-20f6567e.svg#icon-logo"></use>
           </svg>
           <svg class="header-logo-text" width="77" height="13">
-            <use href="/project_12/assets/sprite-0f7bd514.svg#icon-Bookshelf-logo"></use>
+            <use href="/project_12/assets/sprite-20f6567e.svg#icon-Bookshelf-logo"></use>
           </svg>
         </a>
       </div>
@@ -95,7 +99,7 @@
 
         <button type="button" class="mob-menu-close" data-menu-close>
           <svg class="icon-close" width="28" height="28">
-            <use href="/project_12/assets/sprite-0f7bd514.svg#icon-x-close"></use>
+            <use href="/project_12/assets/sprite-20f6567e.svg#icon-x-close"></use>
           </svg>
         </button>
       </div>
@@ -111,7 +115,165 @@
       <a class="link mob-nav-link header-mob-link" href="./shoplist.html"
         >Shopping list
         <svg class="shopping-cart" width="20" height="20">
-          <use href="/project_12/assets/sprite-0f7bd514.svg#icon-cart"></use>
+          <use href="/project_12/assets/sprite-20f6567e.svg#icon-cart"></use>
+        </svg>
+      </a>
+    </li>
+  </ul>
+
+  <div class="mob-img">
+    <picture>
+      <source
+        srcset="/project_12/assets/mob-menu-pic-fb539055.png 1x, /project_12/assets/mob-menu-pic@2x-min-8e2682d8.png 2x"
+        media="(max-width: 767px)"
+      />
+      <source
+        srcset="/project_12/assets/mob-menu-pic-630fae16.webp 1x, /project_12/assets/mob-menu-pic@2x-1b89d370.webp 2x"
+        media="(max-width: 767px)"
+        type="image/webp"
+      />
+      <img class="img-books" src="/project_12/assets/mob-menu-pic-fb539055.png" alt="books" />
+    </picture>
+  </div>
+</div>
+
+    <!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page title</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <aside class="sidebar">
+        <ul class="js-list"></ul>
+      </aside>
+
+      <div class="div">
+        <span class="cat">Audio Fiction</span>
+        <ul class="listOfBookFromCategory"></ul>
+
+        <span class="cat">Advice How-To and Miscellaneous</span>
+        <ul class="listOfBookFromCategory"></ul>
+      </div>
+
+      <!-- <div class="list-top">
+        <ul class="listOfBookFromCategory"></ul>
+      </div> -->
+    </div>
+
+    <div class="modal"></div>
+  </body>
+</html>
+
+    
+    <div class="modal">
+    <button class="modal-close js-modal-close" type="button">
+        <svg class="modal-icon" width="14" height="14">
+            <use href="../img/sprite.svg#icon-Icon"></use>
+        </svg>
+    </button>
+    <div class="modal-content">
+        <div class="js-modal-picture modal-picture"></div>
+
+        <div class="js-modal-info modal-info"></div>
+    </div>
+
+    <button class="modal-btn js-modal-btn" type="button">
+        ADD TO SHOPPING LIST
+    </button>
+</div>
+<div class="overlay js-overlay-modal"></div>
+    <header class="header">
+  <div class="container header-container">
+    <div class="logo-nav">
+      <a class="logo link" href="./index.html">
+        <svg class="header-logo" width="24" height="24">
+          <use href="/project_12/assets/sprite-20f6567e.svg#icon-logo"></use>
+        </svg>
+        <svg class="header-logo-text" width="77" height="13">
+          <use href="/project_12/assets/sprite-20f6567e.svg#icon-Bookshelf-logo"></use>
+        </svg>
+      </a>
+      <nav class="navigation">
+        <ul class="nav-list list">
+          <li class="nav-list-item">
+            <a class="link nav-link current" href="./index.html">Home</a>
+          </li>
+          <li class="nav-list-item">
+            <a class="link nav-link" href="./shoplist.html"
+              >Shopping list
+              <svg class="shopping-cart" width="20" height="20">
+                <use href="/project_12/assets/sprite-20f6567e.svg#icon-cart"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="buttons">
+      <label id="switch" class="switch">
+        <input type="checkbox" id="slider" />
+        <span class="slider round"></span>
+      </label>
+
+      <button type="button" class="burger-open" data-menu-open>
+        <svg class="burger" width="28" height="28">
+          <use href="/project_12/assets/sprite-20f6567e.svg#icon-burger"></use>
+        </svg>
+      </button>
+
+      <button type="button" class="sign-btn">
+        Sign up
+        <svg class="arrow" width="20" height="20">
+          <use href="/project_12/assets/sprite-20f6567e.svg#icon-arrow-narrow-right"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+<!-- MOB MENU -->
+<div class="mob-menu is hidden" data-menu>
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo-nav">
+        <a class="logo link" href="./index.html">
+          <svg class="header-logo" width="24" height="24">
+            <use href="/project_12/assets/sprite-20f6567e.svg#icon-logo"></use>
+          </svg>
+          <svg class="header-logo-text" width="77" height="13">
+            <use href="/project_12/assets/sprite-20f6567e.svg#icon-Bookshelf-logo"></use>
+          </svg>
+        </a>
+      </div>
+
+      <div class="buttons">
+        <label id="switch" class="switch">
+          <input type="checkbox" id="mobile-slider" />
+          <span class="slider round"></span>
+        </label>
+
+        <button type="button" class="mob-menu-close" data-menu-close>
+          <svg class="icon-close" width="28" height="28">
+            <use href="/project_12/assets/sprite-20f6567e.svg#icon-x-close"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <ul class="mob-nav-list list">
+    <li class="mob-nav-list-item">
+      <a class="link mob-nav-link current header-mob-link" href="./index.html"
+        >Home</a
+      >
+    </li>
+    <li class="mob-nav-list-item">
+      <a class="link mob-nav-link header-mob-link" href="./shoplist.html"
+        >Shopping list
+        <svg class="shopping-cart" width="20" height="20">
+          <use href="/project_12/assets/sprite-20f6567e.svg#icon-cart"></use>
         </svg>
       </a>
     </li>
