@@ -12,7 +12,7 @@
               rel="noopener noreferrer"
               aria-label="Amazon"
             >
-              <img class="modal-amazon" src="../img/modal/_amazon.png" alt="Amazon" width="62" height="19" />
+              <img class="modal-amazon" src="./img/modal/_amazon.png" alt="Amazon" width="62" height="19" />
       
             </a>
           
@@ -22,7 +22,7 @@
               rel="noopener noreferrer"
               aria-label="Book"
               >
-              <img class="modal-apple" src="../img/modal/_book.png" alt="Book" width="33" height="32" />
+              <img class="modal-apple" src="./img/modal/_book.png" alt="Book" width="33" height="32" />
 
             </a>
             </div>`;ve.insertAdjacentHTML("beforeend",d),Je.insertAdjacentHTML("beforeend",f)}pn.addEventListener("click",()=>{ze.classList.remove("active"),Ve.classList.remove("active"),document.body.style.overflow=""});const We=document.querySelector(".js-list");x.defaults.baseURL="https://books-backend.p.goit.global/books/";async function yn(){const n=await(await x.get("top-books").then(s=>s.data)).map(s=>s.list_name),r=bn(n);We.insertAdjacentHTML("beforeend",r)}function bn(e){return e.map(t=>`<li class="list-Elem"  data-target="${t}">${t}</li>`).join("")}yn();const ae=document.querySelector(".listOfBookFromCategory");We.addEventListener("click",e=>{const t=e.target.textContent;async function n(){const s=await x.get(`category?category=${t}`).then(i=>i.data),o=En(s);ae.innerHTML=o}n()});function En(e){return e.map(t=>`      <li>
