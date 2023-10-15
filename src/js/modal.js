@@ -43,7 +43,7 @@ function makeModal({
               rel="noopener noreferrer"
               aria-label="Amazon"
             >
-              <img class="modal-amazon" src="../img/modal/_amazon.png" alt="Amazon" width="62" height="19" />
+              <img class="modal-amazon" src="./img/modal/_amazon.png" alt="Amazon" width="62" height="19" />
       
             </a>
           
@@ -53,7 +53,7 @@ function makeModal({
               rel="noopener noreferrer"
               aria-label="Book"
               >
-              <img class="modal-apple" src="../img/modal/_book.png" alt="Book" width="33" height="32" />
+              <img class="modal-apple" src="./img/modal/_book.png" alt="Book" width="33" height="32" />
 
             </a>
             </div>`;
