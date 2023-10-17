@@ -5,56 +5,21 @@
 `):" "+Ft(r[0]):"as no adapter specified";throw new H("There is no suitable adapter to dispatch the request "+a,"ERR_NOT_SUPPORT")}return i},adapters:lt};function Qe(t){if(t.cancelToken&&t.cancelToken.throwIfRequested(),t.signal&&t.signal.aborted)throw new Le(null,t)}function _t(t){return Qe(t),t.headers=se.from(t.headers),t.data=Ze.call(t,t.transformRequest),["post","put","patch"].indexOf(t.method)!==-1&&t.headers.setContentType("application/x-www-form-urlencoded",!1),ms.getAdapter(t.adapter||yt.adapter)(t).then(function(i){return Qe(t),i.data=Ze.call(t,t.transformResponse,i),i.headers=se.from(i.headers),i},function(i){return fs(i)||(Qe(t),i&&i.response&&(i.response.data=Ze.call(t,t.transformResponse,i.response),i.response.headers=se.from(i.response.headers))),Promise.reject(i)})}const jt=t=>t instanceof se?t.toJSON():t;function ue(t,e){e=e||{};const s={};function i(u,d,c){return I.isPlainObject(u)&&I.isPlainObject(d)?I.merge.call({caseless:c},u,d):I.isPlainObject(d)?I.merge({},d):I.isArray(d)?d.slice():d}function n(u,d,c){if(I.isUndefined(d)){if(!I.isUndefined(u))return i(void 0,u,c)}else return i(u,d,c)}function r(u,d){if(!I.isUndefined(d))return i(void 0,d)}function a(u,d){if(I.isUndefined(d)){if(!I.isUndefined(u))return i(void 0,u)}else return i(void 0,d)}function l(u,d,c){if(c in e)return i(u,d);if(c in t)return i(void 0,u)}const o={url:r,method:r,data:r,baseURL:a,transformRequest:a,transformResponse:a,paramsSerializer:a,timeout:a,timeoutMessage:a,withCredentials:a,adapter:a,responseType:a,xsrfCookieName:a,xsrfHeaderName:a,onUploadProgress:a,onDownloadProgress:a,decompress:a,maxContentLength:a,maxBodyLength:a,beforeRedirect:a,transport:a,httpAgent:a,httpsAgent:a,cancelToken:a,socketPath:a,responseEncoding:a,validateStatus:l,headers:(u,d)=>n(jt(u),jt(d),!0)};return I.forEach(Object.keys(Object.assign({},t,e)),function(d){const c=o[d]||n,f=c(t[d],e[d],d);I.isUndefined(f)&&c!==l||(s[d]=f)}),s}const hs="1.5.1",bt={};["object","boolean","number","function","string","symbol"].forEach((t,e)=>{bt[t]=function(i){return typeof i===t||"a"+(e<1?"n ":" ")+t}});const Gt={};bt.transitional=function(e,s,i){function n(r,a){return"[Axios v"+hs+"] Transitional option '"+r+"'"+a+(i?". "+i:"")}return(r,a,l)=>{if(e===!1)throw new H(n(a," has been removed"+(s?" in "+s:"")),H.ERR_DEPRECATED);return s&&!Gt[a]&&(Gt[a]=!0,console.warn(n(a," has been deprecated since v"+s+" and will be removed in the near future"))),e?e(r,a,l):!0}};function Gi(t,e,s){if(typeof t!="object")throw new H("options must be an object",H.ERR_BAD_OPTION_VALUE);const i=Object.keys(t);let n=i.length;for(;n-- >0;){const r=i[n],a=e[r];if(a){const l=t[r],o=l===void 0||a(l,r,t);if(o!==!0)throw new H("option "+r+" must be "+o,H.ERR_BAD_OPTION_VALUE);continue}if(s!==!0)throw new H("Unknown option "+r,H.ERR_BAD_OPTION)}}const dt={assertOptions:Gi,validators:bt},ie=dt.validators;class Be{constructor(e){this.defaults=e,this.interceptors={request:new Bt,response:new Bt}}request(e,s){typeof e=="string"?(s=s||{},s.url=e):s=e||{},s=ue(this.defaults,s);const{transitional:i,paramsSerializer:n,headers:r}=s;i!==void 0&&dt.assertOptions(i,{silentJSONParsing:ie.transitional(ie.boolean),forcedJSONParsing:ie.transitional(ie.boolean),clarifyTimeoutError:ie.transitional(ie.boolean)},!1),n!=null&&(I.isFunction(n)?s.paramsSerializer={serialize:n}:dt.assertOptions(n,{encode:ie.function,serialize:ie.function},!0)),s.method=(s.method||this.defaults.method||"get").toLowerCase();let a=r&&I.merge(r.common,r[s.method]);r&&I.forEach(["delete","get","head","post","put","patch","common"],m=>{delete r[m]}),s.headers=se.concat(a,r);const l=[];let o=!0;this.interceptors.request.forEach(function(g){typeof g.runWhen=="function"&&g.runWhen(s)===!1||(o=o&&g.synchronous,l.unshift(g.fulfilled,g.rejected))});const u=[];this.interceptors.response.forEach(function(g){u.push(g.fulfilled,g.rejected)});let d,c=0,f;if(!o){const m=[_t.bind(this),void 0];for(m.unshift.apply(m,l),m.push.apply(m,u),f=m.length,d=Promise.resolve(s);c<f;)d=d.then(m[c++],m[c++]);return d}f=l.length;let p=s;for(c=0;c<f;){const m=l[c++],g=l[c++];try{p=m(p)}catch(v){g.call(this,v);break}}try{d=_t.call(this,p)}catch(m){return Promise.reject(m)}for(c=0,f=u.length;c<f;)d=d.then(u[c++],u[c++]);return d}getUri(e){e=ue(this.defaults,e);const s=ps(e.baseURL,e.url);return ds(s,e.params,e.paramsSerializer)}}I.forEach(["delete","get","head","options"],function(e){Be.prototype[e]=function(s,i){return this.request(ue(i||{},{method:e,url:s,data:(i||{}).data}))}});I.forEach(["post","put","patch"],function(e){function s(i){return function(r,a,l){return this.request(ue(l||{},{method:e,headers:i?{"Content-Type":"multipart/form-data"}:{},url:r,data:a}))}}Be.prototype[e]=s(),Be.prototype[e+"Form"]=s(!0)});const De=Be;class St{constructor(e){if(typeof e!="function")throw new TypeError("executor must be a function.");let s;this.promise=new Promise(function(r){s=r});const i=this;this.promise.then(n=>{if(!i._listeners)return;let r=i._listeners.length;for(;r-- >0;)i._listeners[r](n);i._listeners=null}),this.promise.then=n=>{let r;const a=new Promise(l=>{i.subscribe(l),r=l}).then(n);return a.cancel=function(){i.unsubscribe(r)},a},e(function(r,a,l){i.reason||(i.reason=new Le(r,a,l),s(i.reason))})}throwIfRequested(){if(this.reason)throw this.reason}subscribe(e){if(this.reason){e(this.reason);return}this._listeners?this._listeners.push(e):this._listeners=[e]}unsubscribe(e){if(!this._listeners)return;const s=this._listeners.indexOf(e);s!==-1&&this._listeners.splice(s,1)}static source(){let e;return{token:new St(function(n){e=n}),cancel:e}}}const qi=St;function Vi(t){return function(s){return t.apply(null,s)}}function Xi(t){return I.isObject(t)&&t.isAxiosError===!0}const ct={Continue:100,SwitchingProtocols:101,Processing:102,EarlyHints:103,Ok:200,Created:201,Accepted:202,NonAuthoritativeInformation:203,NoContent:204,ResetContent:205,PartialContent:206,MultiStatus:207,AlreadyReported:208,ImUsed:226,MultipleChoices:300,MovedPermanently:301,Found:302,SeeOther:303,NotModified:304,UseProxy:305,Unused:306,TemporaryRedirect:307,PermanentRedirect:308,BadRequest:400,Unauthorized:401,PaymentRequired:402,Forbidden:403,NotFound:404,MethodNotAllowed:405,NotAcceptable:406,ProxyAuthenticationRequired:407,RequestTimeout:408,Conflict:409,Gone:410,LengthRequired:411,PreconditionFailed:412,PayloadTooLarge:413,UriTooLong:414,UnsupportedMediaType:415,RangeNotSatisfiable:416,ExpectationFailed:417,ImATeapot:418,MisdirectedRequest:421,UnprocessableEntity:422,Locked:423,FailedDependency:424,TooEarly:425,UpgradeRequired:426,PreconditionRequired:428,TooManyRequests:429,RequestHeaderFieldsTooLarge:431,UnavailableForLegalReasons:451,InternalServerError:500,NotImplemented:501,BadGateway:502,ServiceUnavailable:503,GatewayTimeout:504,HttpVersionNotSupported:505,VariantAlsoNegotiates:506,InsufficientStorage:507,LoopDetected:508,NotExtended:510,NetworkAuthenticationRequired:511};Object.entries(ct).forEach(([t,e])=>{ct[e]=t});const Yi=ct;function gs(t){const e=new De(t),s=Zt(De.prototype.request,e);return I.extend(s,De.prototype,e,{allOwnKeys:!0}),I.extend(s,e,null,{allOwnKeys:!0}),s.create=function(n){return gs(ue(t,n))},s}const G=gs(yt);G.Axios=De;G.CanceledError=Le;G.CancelToken=qi;G.isCancel=fs;G.VERSION=hs;G.toFormData=Ge;G.AxiosError=H;G.Cancel=G.CanceledError;G.all=function(e){return Promise.all(e)};G.spread=Vi;G.isAxiosError=Xi;G.mergeConfig=ue;G.AxiosHeaders=se;G.formToJSON=t=>us(I.isHTMLForm(t)?new FormData(t):t);G.getAdapter=ms.getAdapter;G.HttpStatusCode=Yi;G.default=G;const he=G;he.defaults.baseURL="https://books-backend.p.goit.global/books/";async function Wi(t){return await(await he.get(`${t}`)).data}async function ws(){return he.get("top-books").then(t=>{if(t.status!==200)throw new Error(t.status);return t.data})}async function qt(t){return he.get(`category?category=${t}`).then(e=>{if(e.status!==200)throw new Error(e.status);return e.data})}async function Et(){return he.get("top-books").then(t=>{if(t.status!==200)throw new Error(t.status);return t.data})}const fe=document.querySelector(".js-modal-btn"),Me=document.querySelector(".js-modal-remove-btn"),Ne=document.querySelector(".js-modal-add");let ce=[];localStorage.setItem("books",JSON.stringify(ce));function Ui(t){ce.push(t),localStorage.setItem("books",JSON.stringify(ce)),fe.style.display="none",Me.style.display="block",Ne.style.display="block"}function Ji(t){const e=ce.indexOf(t);ce.splice(e,1),localStorage.setItem("books",JSON.stringify(ce)),fe.style.display="block",Me.style.display="none",Ne.style.display="none"}fe.addEventListener("click",()=>{fe.removeEventListener("click",globalThis),Ui(Ee)});Me.addEventListener("click",()=>{Ji(Ee)});function Ki(t){const e=JSON.parse(localStorage.getItem("books")),s=e.find(i=>i._id===t._id);if(e.length===0||!s){fe.style.display="block",Me.style.display="none",Ne.style.display="none";return}fe.style.display="none",Me.style.display="block",Ne.style.display="block"}const vs=document.querySelector(".modal-field"),ys=document.querySelector(".js-modal-picture"),bs=document.querySelector(".js-modal-info"),xt=document.querySelector(".js-overlay-modal"),Zi=document.querySelector(".js-modal-close");let Ee=null;async function Qi(t){xt.classList.add("active"),document.body.style.overflow="hidden",ys.innerHTML="",bs.innerHTML="",Ee=await Wi(t),Ki(Ee);const e=er(Ee);return vs.classList.add("active"),e}function er({author:t,book_image:e,book_image_width:s,book_image_height:i,description:n,title:r,amazon_product_url:a,buy_links:l}){const o=`<img class="modal-picture-content" src="${e}" alt="${r}"  width="${s}" height="${i}" />`,u=`<h2 class= "modal-title">${r}</h2>
         <h3 class="modal-author">${t}</h3>
         <p class="modal-description">${n}</p>
-        <div class="modal-icons">
-            <picture>
-              <source
-                srcset="
-                  ../images/modal/_amazon.png 1x,
-                  ../images/modal/_amazon-retina.png 2x
-                "
-                type="image/png"
-              />
-              <a
-                href="${a}"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Amazon"
-              >
-                <img
-                  class="modal-amazon"
-                  src="./images/modal/_amazon.png"
-                  alt="Amazon"
-                  width="62"
-                  height="19"
-                  loading="lazy"
-                />
-              </a>
-            </picture>
-            <picture>
-              <source
-                srcset="
-                  ../images/modal/_book.png 1x,
-                  ../images/modal/_book-retina.png 2x
-                "
-                type="image/png"
-              />
-              <a
-                href="${l[1].url}"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Amazon"
-              >
-                <img
-                  class="modal-apple"
-                  src="./images/modal/_book.png"
-                  alt="Apple"
-                  width="62"
-                  height="19"
-                  loading="lazy"
-                />
-              </a>
-            </picture>
-            </div>`;ys.insertAdjacentHTML("beforeend",o),bs.insertAdjacentHTML("beforeend",u)}function Tt(){vs.classList.remove("active"),xt.classList.remove("active"),document.body.style.overflow=""}Zi.addEventListener("click",Tt);document.addEventListener("keydown",t=>{t.key==="Escape"&&Tt()});xt.addEventListener("click",()=>{Tt()});const Ae=document.querySelector(".js-list");he.defaults.baseURL="https://books-backend.p.goit.global/books/";ws().then(t=>{const e=t.map(i=>i.list_name),s=tr(e);Ae.insertAdjacentHTML("beforeend",s)});function tr(t){return t.map(e=>`<li class="list-elem"  data-target="${e}">${e}</li>`).join("")}ws();const Mt=document.querySelector(".listOfBookFromCategory");Ae.addEventListener("click",t=>{const e=t.target.textContent;qt(e).then(s=>{const i=sr(s);Mt.innerHTML=i}),qt()});function sr(t){return t.map(e=>` <li class="js-list-card" data-id="${e._id}">
+        <div class="modal-icons"><a
+      class="modal-amazon"
+      href="${a}"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Amazon"
+    >
+    </a><a
+      class="modal-apple"
+      href="${l[1].url}"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Apple"
+    >
+    </a></div>`;ys.insertAdjacentHTML("beforeend",o),bs.insertAdjacentHTML("beforeend",u)}function Tt(){vs.classList.remove("active"),xt.classList.remove("active"),document.body.style.overflow=""}Zi.addEventListener("click",Tt);document.addEventListener("keydown",t=>{t.key==="Escape"&&Tt()});xt.addEventListener("click",()=>{Tt()});const Ae=document.querySelector(".js-list");he.defaults.baseURL="https://books-backend.p.goit.global/books/";ws().then(t=>{const e=t.map(i=>i.list_name),s=tr(e);Ae.insertAdjacentHTML("beforeend",s)});function tr(t){return t.map(e=>`<li class="list-elem"  data-target="${e}">${e}</li>`).join("")}ws();const Mt=document.querySelector(".listOfBookFromCategory");Ae.addEventListener("click",t=>{const e=t.target.textContent;qt(e).then(s=>{const i=sr(s);Mt.innerHTML=i}),qt()});function sr(t){return t.map(e=>` <li class="js-list-card" data-id="${e._id}">
     <img class="js-list-img" src="${e.book_image}" alt="" />
     <h1 class="js-list-title">${e.title}</h1>
   </li>`).join("")}Et().then(t=>t.map(e=>Ss(e.list_name,e.books)));function Ss(t,e){const s=e.map(i=>`<li class="js-list-card" data-id="${i._id}"> 
