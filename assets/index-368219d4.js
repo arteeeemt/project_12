@@ -28,7 +28,7 @@ import"./support-a34a1fe1.js";function Ne(e,t){return function(){return e.apply(
                    <h4 class="js-list-title">${r.title}</h4>
                    <p class="js-autor">${r.author}</p>
                  </div>
-               </li>`).join("");D.insertAdjacentHTML("beforeend",`<div>
+               </li>`).join("");D.insertAdjacentHTML("beforeend",`<div class="js-markup-block">
        <h3 class="js-markup-category">${e}</h3>
        <ul class="js-markup-list">${n}</ul>
        <div class="js-button-more"><button class="js-see-more" data-target="${e}">See more</button></div>
