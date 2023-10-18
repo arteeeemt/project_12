@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAzUExURUdwTPb29k8u6Hhg6/T09Kqa78m/8vf39/X19fX19Xlg62RH6o557aKS77er8JiG7lo76Qw9ZPUAAAAKdFJOUwD///9gr6+foIDU6Za/AAAAYUlEQVQoz3XNSRaAIAwE0U5wigb0/qd1IeBj6Nr+RcFkHmAMiADAdnbdGY6kbaGAJAYSQ+1pQLxerxbUGVQZoMgIWSbwyQzUGagzUGeg3sFfZCCRgcQCy961ZhgzBjAGsBenHwUy9E7L6wAAAABJRU5ErkJggg==" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAzUExURUdwTPb29k8u6Hhg6/T09Kqa78m/8vf39/X19fX19Xlg62RH6o557aKS77er8JiG7lo76Qw9ZPUAAAAKdFJOUwD///9gr6+foIDU6Za/AAAAYUlEQVQoz3XNSRaAIAwE0U5wigb0/qd1IeBj6Nr+RcFkHmAMiADAdnbdGY6kbaGAJAYSQ+1pQLxerxbUGVQZoMgIWSbwyQzUGagzUGeg3sFfZCCRgcQCy961ZhgzBjAGsBenHwUy9E7L6wAAAABJRU5ErkJggg==" />
     <title>Shopping List</title>
@@ -12,9 +13,9 @@
       rel="stylesheet"
     />
     
-    <script type="module" crossorigin src="/project_12/assets/shoplist-1a954cf1.js"></script>
+    <script type="module" crossorigin src="/project_12/assets/shoplist-682fbf07.js"></script>
     <link rel="modulepreload" crossorigin href="/project_12/assets/support-13a0f787.js">
-    <link rel="stylesheet" href="/project_12/assets/shoplist-5e34823a.css">
+    <link rel="stylesheet" href="/project_12/assets/shoplist-2e1b823e.css">
   </head>
   <body>
     <!-- <div class="mask">
@@ -137,7 +138,10 @@
   <!--  -->
 </div>
 
-    <link
+
+    <section class="shoplist">
+      <div class="container shoplist-container">
+        <aside><link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
 />
@@ -167,11 +171,17 @@
     </svg>
   </button>
 </div>
+</aside>
 
-
-    <ul class="js-shoping-list-book"></ul>
-    <div class="listOfBookFromCategory"></div>
-
+        <div class="shoplist-empty">
+          <h1 class="shoplist-header">
+            Shopping <span class="shoplist-header-span">List</span>
+          </h1>
+          <ul class="js-shoping-list-book"></ul>
+          <div class="listOfBookFromCategory"></div>
+        </div>
+      </div>
+    </section>
     <!-- <div class="modal"></div> -->
 
     
