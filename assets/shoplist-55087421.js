@@ -7,7 +7,7 @@ import"./support-6fde6aec.js";const e=document.querySelector(".js-shoping-list-b
   <div>
     <button type="button" class="shopping-card-button js-modal-remove-btn">
       <svg class="shopping-card-icon" data-id="${o._id}">
-        <use href="../img/sprite.svg#icon-trash">
+        <use href="./img/sprite.svg#icon-trash">
       </svg></button>
     <h2 class="shopping-card-title">${o.title}</h2>
 
@@ -16,7 +16,7 @@ import"./support-6fde6aec.js";const e=document.querySelector(".js-shoping-list-b
     <div class="shopping-card-footer">
       <p class="shopping-card-autor">${o.author}</p>
       <div class="shop-list-icons"><a class="shopplist-amazon" href="${o.amazon_product_url}"
-      target="_blank"
+      target="_blank"  
       rel="noopener noreferrer"
       aria-label="Amazon"></a></a>
         <a class="shopplist-apple" href="${o.buy_links[1].url}"
